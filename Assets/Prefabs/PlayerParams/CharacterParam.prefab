@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7034777727341428685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8382766004595480662}
+  - component: {fileID: 1625662289347996598}
+  m_Layer: 0
+  m_Name: CharacterParam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8382766004595480662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034777727341428685}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1598.5394, y: 553.9937, z: -1.4932388}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1625662289347996598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034777727341428685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026215f79af57ab448ed53b47090b0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Suho
+  Description: "\uB0B4\uC77C\uBC30\uC6C0\uCEA0\uD504\uC5D0 \uC11C\uC2DD\uD558\uB294
+    \uD558\uB4F1\uC885\uC774\uB2E4."
+  Level: 1
+  Experience: 0
+  Gold: 1000
+  AttackPower: 8
+  DefencePower: 5
+  Health: 100
+  Critical: 10
+  Inventory:
+  - {fileID: 11400000, guid: 7ad3c4a9cc96a8745a9a76e86c11ae8a, type: 2}

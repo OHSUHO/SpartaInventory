@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /* 2025.06.04 오수호 작성
@@ -12,32 +13,7 @@ using UnityEngine;
  
  */
 
-public class CharacterParam
-{
-    public string Name;
-    public string Description;
-    public int Level;
-    public float Experience;
-    public float Gold;
-    public float AttackPower;
-    public float DefencePower;
-    public float Health;
-    public float Critical;
 
-    public CharacterParam(string name = "defalut", string description = "변방의 기사", int level = 1, float health = 100, float critical = 10, float gold = 1000,
-        float attackPower = 8, float defencePower = 8,float experience = 0)
-    {
-        Name = name;
-        Description = description;
-        Level = level;
-        Experience = experience;
-        Gold = gold;
-        AttackPower = attackPower;
-        DefencePower = defencePower;
-        Health = health;
-        Critical = critical;
-    }
-}
 public class Character
 {
     private string _characterName;
@@ -50,6 +26,7 @@ public class Character
     private float _defencePower;
     private float _health;
     private float _critical;
+    private List<Item> _inventory;
 
     public string CharacterName { get => _characterName;
         private set => _characterName = value;
@@ -69,6 +46,8 @@ public class Character
     public float DefencePower { get => _defencePower; private set => _defencePower = value; }
     public float Health { get => _health; private set => _health = value; }
     public float Critical { get => _critical; private set => _critical = value; }
+    
+    public List<Item> Inventory { get => _inventory; private set => _inventory = value; }
 
     public Character(CharacterParam param)
     {
