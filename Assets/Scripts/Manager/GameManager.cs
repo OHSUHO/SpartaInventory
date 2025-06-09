@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GameManager : MonoBehaviour
+public class GameManager : SingleTon<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    private Character _player;
+    public Character Player { get => _player; private set => _player = value; }
+
+    public override void Awake()
     {
-        
+        base.Awake();
+        Player = new Character(new CharacterParam(
+            name : "Suho",
+            description: "매 주 게임을 개발하는 개발자이다.",
+            level : 1,
+            health : 100,
+            critical : 10,
+            experience : 0,
+            gold : 1000,
+            attackPower: 8,
+            defencePower: 8));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

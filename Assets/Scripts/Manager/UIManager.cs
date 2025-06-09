@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : SingleTon<UIManager>
 {
-    [SerializeField] UIMainMenu mainMenu;
-    [SerializeField] UIInventory uiInventory;
-    [SerializeField] UIStatus status;
+    [SerializeField] private UIMainMenu mainMenu;
+    [SerializeField] private UIInventory uiInventory;
+    [SerializeField] private UIStatus uiStatus;
+    
+    public UIMainMenu MainMenu => mainMenu;
+    public UIInventory UIInventory => uiInventory;
+    public UIStatus UIStatus => uiStatus;
+    
 
 }

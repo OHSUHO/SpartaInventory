@@ -1,18 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIStatus : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject statusPanel;
+    [SerializeField] private Button statusButton;
+    [SerializeField] private TextMeshProUGUI attackText;
+    [SerializeField] private TextMeshProUGUI defenseText;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI criticalText;
+    
+    public GameObject StatusPanel => statusPanel;
+    public Button StatusButton => statusButton;
+    
+    private void Start()
     {
-        
+        statusButton.onClick.AddListener(UIManager.Instance.MainMenu.OpenStatus);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        SetStatusUI();
+    }
+
+    private void SetStatusUI()
+    {
+        attackText.SetText($"Attack +{GameManager.Instance.Player.AttackPower}");
+        defenseText.SetText($"Defence +{GameManager.Instance.Player.DefencePower}");
+        healthText.SetText($"Health +{GameManager.Instance.Player.Health}");
+        criticalText.SetText($"Critical +{GameManager.Instance.Player.Critical}");
     }
 }
