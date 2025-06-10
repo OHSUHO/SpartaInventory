@@ -48,7 +48,7 @@ MonoBehaviour:
   Description: "\uB0B4\uC77C\uBC30\uC6C0\uCEA0\uD504\uC5D0 \uC11C\uC2DD\uD558\uB294
     \uD558\uB4F1\uC885\uC774\uB2E4."
   Level: 1
-  Experience: 0
+  Experience: 2
   Gold: 1000
   AttackPower: 8
   DefencePower: 5
@@ -56,3 +56,4 @@ MonoBehaviour:
   Critical: 10
   Inventory:
   - {fileID: 11400000, guid: 7ad3c4a9cc96a8745a9a76e86c11ae8a, type: 2}
+  - {fileID: 11400000, guid: 30b2e2ee16d2bb240a82fec2fc7b6167, type: 2}

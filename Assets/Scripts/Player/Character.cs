@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,6 @@ using UnityEngine;
  기능 : 캐릭터에 필요한 변수 선언 및 저장 
  
  이름, 설명, 레벨, 경험치, 골드 
- 
- 
- 
- 
  
  */
 
@@ -26,7 +23,6 @@ public class Character
     private float _defencePower;
     private float _health;
     private float _critical;
-    private List<Item> _inventory;
 
     public string CharacterName { get => _characterName;
         private set => _characterName = value;
@@ -47,7 +43,10 @@ public class Character
     public float Health { get => _health; private set => _health = value; }
     public float Critical { get => _critical; private set => _critical = value; }
     
-    public List<Item> Inventory { get => _inventory; private set => _inventory = value; }
+    public List<Item> Inventory { get; private set;} = new List<Item>();
+    public List<EquipItem> EquippedItems { get; private set; } = new List<EquipItem>();
+
+    public Action EquipedAction;
 
     public Character(CharacterParam param)
     {
@@ -61,6 +60,74 @@ public class Character
         _defencePower = param.DefencePower;
         _health = param.Health;
         _critical = param.Critical;
+        foreach (Item item in param.Inventory)
+        {
+            AddItem(item);
+        }
     }
-    
+
+    public void AddItem(Item item)
+    {
+        Inventory.Add(item);
+    }
+
+    public bool EquipItem(EquipItem item)
+    {
+        if (!EquippedItems.Contains(item))
+        {
+            EquippedItems.Add(item);
+            foreach (var stat in item.stats)
+            {
+                switch (stat.statType)
+                {   
+                    case EquipItemStatType.Attack : _attackPower += stat.statValue;
+                        break;
+                    case EquipItemStatType.Defence : _defencePower += stat.statValue;
+                        break;
+                    case EquipItemStatType.Health : _health += stat.statValue;
+                        break;
+                    case EquipItemStatType.Critical : _critical += stat.statValue;
+                        break;
+                }
+            EquipedAction?.Invoke();
+            }
+
+            return true;
+        }
+        else
+        {
+            UnequipItem(item);
+            return false;
+        }
+    }
+
+    public void UnequipItem(EquipItem item)
+    {
+        if (EquippedItems.Contains(item))
+        {
+        EquippedItems.Remove(item);
+        foreach (var stat in item.stats)
+        {
+            switch (stat.statType)
+            {
+                case EquipItemStatType.Attack:
+                    _attackPower -= stat.statValue;
+                    break;
+                case EquipItemStatType.Defence:
+                    _defencePower -= stat.statValue;
+                    break;
+                case EquipItemStatType.Health:
+                    _health -= stat.statValue;
+                    break;
+                case EquipItemStatType.Critical:
+                    _critical -= stat.statValue;
+                    break;
+            }
+        }
+        EquipedAction?.Invoke();
+            
+        }
+        
+    }
+
 }

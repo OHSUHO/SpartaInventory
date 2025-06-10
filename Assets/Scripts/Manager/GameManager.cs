@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : SingleTon<GameManager>
@@ -10,7 +11,12 @@ public class GameManager : SingleTon<GameManager>
     public override void Awake()
     {
         base.Awake();
-        Player = new Character(playerParam);
+        SetData(playerParam);
+        
+    }
+    private void SetData(CharacterParam param)
+    {
+        Player = new Character(param);
     }
 
 }

@@ -20,6 +20,7 @@ public class UIMainMenu : MonoBehaviour
    [SerializeField] private TextMeshProUGUI playerExpText;
    [SerializeField] private TextMeshProUGUI playerGoldText;
    [SerializeField] private TextMeshProUGUI playerDescText;
+   [SerializeField] private Image expImage;
    public Button BackButton => backButton;
    public Dictionary<UIState,GameObject> uiStates = new Dictionary<UIState,GameObject>();
 
@@ -29,8 +30,8 @@ public class UIMainMenu : MonoBehaviour
    {
       BackButton.onClick.AddListener(UIManager.Instance.MainMenu.OpenMainMenu);
       uiStates.Add(UIState.MainMenu,mainMenu);
-      uiStates.Add(UIState.Inventory,UIManager.Instance.UIInventory.InventoryPanel);
-      uiStates.Add(UIState.Status,UIManager.Instance.UIStatus.StatusPanel);
+      uiStates.Add(UIState.Inventory,UIManager.Instance.UIInven.InventoryPanel);
+      uiStates.Add(UIState.Status,UIManager.Instance.UIStat.StatusPanel);
       SetMainUI();
    }
 
@@ -41,6 +42,7 @@ public class UIMainMenu : MonoBehaviour
       playerNameText.SetText(GameManager.Instance.Player.CharacterName);
       playerLevelText.SetText($"Lv. {GameManager.Instance.Player.Level}");
       playerExpText.SetText($"{GameManager.Instance.Player.CurrentExp} / {GameManager.Instance.Player.MaxExp}");
+      expImage.fillAmount = (float)GameManager.Instance.Player.CurrentExp / (float)GameManager.Instance.Player.MaxExp;
       playerGoldText.SetText($"Gold : {GameManager.Instance.Player.Gold}");
       playerDescText.SetText(GameManager.Instance.Player.Description);
       

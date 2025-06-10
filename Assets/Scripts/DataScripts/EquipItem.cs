@@ -5,5 +5,13 @@ using UnityEngine;
 public class EquipItem : Item
 {
     public EquipItemType equipType;
-    public List<(EquipItemStatType,int)> stats = new List<(EquipItemStatType, int)>();
+
+    [System.Serializable]
+    public class StatChange
+    {
+        public EquipItemStatType statType;
+        public int statValue;
+    }
+    public List<StatChange> stats = new List<StatChange>();
+    
 }

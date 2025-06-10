@@ -18,6 +18,7 @@ public class UIStatus : MonoBehaviour
     private void Start()
     {
         statusButton.onClick.AddListener(UIManager.Instance.MainMenu.OpenStatus);
+        GameManager.Instance.Player.EquipedAction += SetStatusUI;
     }
 
     private void OnEnable()

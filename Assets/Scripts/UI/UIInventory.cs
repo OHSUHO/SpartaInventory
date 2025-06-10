@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,11 +17,13 @@ public class UIInventory : MonoBehaviour
     public GameObject InventoryPanel => inventoryPanel;
     public Button InventoryButton => inventoryButton;
 
+    private void Awake()
+    {
+        InitInventoryUI();
+    }
     private void Start()
     {
         inventoryButton.onClick.AddListener(UIManager.Instance.MainMenu.OpenInventory);
-        Debug.Log(scrollRect.normalizedPosition);
-        InitInventoryUI();
     }
 
     private void InitInventoryUI()
@@ -31,6 +32,28 @@ public class UIInventory : MonoBehaviour
         {
             _slots.Add(Instantiate(slotPrefab, content).GetComponent<UISlot>());
         }
+
+        foreach (var item in GameManager.Instance.Player.Inventory)
+        {
+            FindBlankSlot().SetItem(item);
+        }
+        inventoryText.SetText($"Inventory: {GameManager.Instance.Player.Inventory.Count} / {maxSlotCount}");
     }
+
+    public UISlot FindBlankSlot()
+    {
+        foreach (var slot in _slots)
+        {
+            if (slot.BlankSlot())
+            {
+                return slot;
+            }
+        }
+
+        return null;
+    }
+    
+    
+    
  
 }

@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
-
+using Unity.VisualScripting;
 public enum EquipItemStatType
 {
     Health,
@@ -29,6 +28,13 @@ public class Item : ScriptableObject
     public string itemName;
     public string itemDescription;
     public ItemType itemType;
-    
+
+    private void Awake()
+    {
+        if (itemIcon == null)
+        {
+            Resources.Load<Sprite>($"{itemName}_Icon");
+        }
+    }
     
 }
